@@ -46,9 +46,8 @@ class StudentAdapter (
 
 //        출생 연도를 가지고 (2021년) 한국식 나이로 변환해서 보여주기
 
-        val koreanAge = 2021 - studentData.birthYear + 1
 
-        birthYearTxt.text = "(${koreanAge}세)"
+        birthYearTxt.text = "(${studentData.getMyAgeIn2021()}세)"
 
 
         return row
