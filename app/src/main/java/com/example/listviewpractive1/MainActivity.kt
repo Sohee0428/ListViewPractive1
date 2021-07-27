@@ -2,6 +2,7 @@ package com.example.listviewpractive1
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import com.example.listviewpractive1.adapters.StudentAdapter
 import com.example.listviewpractive1.datas.Student
@@ -27,6 +28,11 @@ class MainActivity : AppCompatActivity() {
         mStudentList.add( Student("하동훈", 1979))
         mStudentList.add( Student("정형돈", 1978))
         mStudentList.add( Student("노홍철", 1979))
+
+
+        for ( std in mStudentList) {
+            Log.d("학생 이름", std.name)
+        }
 
 
         mAdapter = StudentAdapter(this, R.layout.student_list_item, mStudentList)
