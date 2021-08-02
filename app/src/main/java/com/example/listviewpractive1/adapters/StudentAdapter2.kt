@@ -1,30 +1,41 @@
 package com.example.listviewpractive1.adapters
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
+import android.widget.TextView
+import androidx.recyclerview.widget.RecyclerView
 import com.example.listviewpractive1.R
 import com.example.listviewpractive1.datas.Student2
 
-class StudentAdapter2(
-    val mContext: Context,
-    val resId: Int,
-    val list: ArrayList<Student2>) : ArrayAdapter<Student2>(mContext, resId, list) {
 
-        val inflater = LayoutInflater.from(mContext)
+class StudentAdapter2(val data: Array<Student2>) :
+    RecyclerView.Adapter<StudentAdapter2.ViewHolder>() {
 
-    override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
+    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
-        var tempRow = convertView
-        if (tempRow == null) {
-            tempRow = inflater.inflate(R.layout.student_list_item2, null)
+        val textView1: TextView
+        val textView2: TextView
+
+        init {
+            textView1 = view.findViewById(R.id.studentNameTxt)
+            textView2 = view.findViewById(R.id.studentBirthYearTxt)
+
         }
 
-        val row = tempRow!!
+        override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
+            val view =
+                LayoutInflater.from(viewGroup.context)
+                    .inflate(R.layout.student_list_item2, viewGroup, false)
+            return ViewHolder(view)
+        }
 
-        return row
+        override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
+
+            viewHolder.textView1.text = data[position]
+        }
+
+        override fun getItemCount() = data[size]
     }
 
 }
