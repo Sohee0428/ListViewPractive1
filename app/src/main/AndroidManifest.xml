@@ -10,13 +10,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ListViewPractive1">
         <activity android:name=".MainActivity2">
-            <action android:name="android.intent.action.MAIN" />
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-            <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity android:name=".MainActivity">
-            <intent-filter>
-            </intent-filter>
+
         </activity>
     </application>
 

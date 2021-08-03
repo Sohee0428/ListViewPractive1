@@ -1,6 +1,5 @@
 package com.example.listviewpractive1.datas
 
-class Student2(
+data class Student2(
     val name: String,
-    val birthYear: Int) {
-}
+    val birthYear: Int)

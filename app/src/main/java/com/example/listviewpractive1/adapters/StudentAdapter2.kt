@@ -7,35 +7,41 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.listviewpractive1.R
 import com.example.listviewpractive1.datas.Student2
+import kotlinx.android.synthetic.main.student_list_item2.view.*
 
 
-class StudentAdapter2(val data: Array<Student2>) :
-    RecyclerView.Adapter<StudentAdapter2.ViewHolder>() {
+class StudentAdapter2() : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+    private var datas: List<Student2> = ArrayList()
 
-        val textView1: TextView
-        val textView2: TextView
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
 
-        init {
-            textView1 = view.findViewById(R.id.studentNameTxt)
-            textView2 = view.findViewById(R.id.studentBirthYearTxt)
-
-        }
-
-        override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
-            val view =
-                LayoutInflater.from(viewGroup.context)
-                    .inflate(R.layout.student_list_item2, viewGroup, false)
-            return ViewHolder(view)
-        }
-
-        override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
-
-            viewHolder.textView1.text = data[position]
-        }
-
-        override fun getItemCount() = data[size]
+        return MyViewHolder(
+            LayoutInflater.from(parent.context).inflate(R.layout.student_list_item2, parent, false)
+        )
     }
+
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+        when (holder) {
+            is MyViewHolder -> {
+                holder.bind(datas.get(position))
+            }
+        }
+    }
+
+    override fun getItemCount(): Int {
+        return datas.size
+    }
+
+    class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val studentNameTxt: TextView = itemView.studentNameTxt
+        val studentBirthYearTxt: TextView = itemView.studentBirthYearTxt
+
+        fun bind(student: Student2) {
+            studentNameTxt.setText(student.name)
+            studentBirthYearTxt.setText(student.birthYear)
+        }
+    }
+
 
 }
